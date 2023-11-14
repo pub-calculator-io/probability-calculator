@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <title>Probability Calculator</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <meta name="description" content="The probability calculator can find two events&#x27; probability and the normal distribution probability. Learn more about probability&#x27;s laws and calculations.">
+    <link rel="preload" href="./assets/fonts/inter-v12-latin-regular.woff2" as="font" crossorigin type="font/woff2">
+    <link rel="preload" href="./assets/fonts/inter-v12-latin-500.woff2" as="font" crossorigin type="font/woff2">
+    <link rel="preload" href="./assets/fonts/inter-v12-latin-600.woff2" as="font" crossorigin type="font/woff2">
+    <link rel="preload" href="./assets/fonts/inter-v12-latin-800.woff2" as="font" crossorigin type="font/woff2">
+    <script type="text/javascript">
+        window._ = document.getElementById.bind(document);
+        window.$ = document.querySelector.bind(document);
+        window.$$ = document.querySelectorAll.bind(document);
+        window.defaultSystem = "imperial";
+        localStorage.setItem("theme", "light");
+    </script>
+    <link rel="stylesheet" href="./assets/css/main.min.css" />
+    <script src="./assets/js/all-calculators.js" defer></script>
+</head>
+<body style="background-color: transparent !important; min-height: 0 !important">
+
+<div style="width: 100%;">
+    <div style="width:350px;float:left;padding: 15px;">
+        <div class="calculator-settings">
+            <div class="calculator-setting" id="calculator_form">
+                <div class="calculator-content col">
+                	<div class="input-wrapper row">
+                		<label class="input col ">
+                			
+                			<div class="dropdown-wrapper">
+                				<div class="input-field row " tabindex="0">
+                					<select class="input-field__text" onchange="switchTab(this)" id="type">
+                							<option value="Probability of Two Events" >
+                							Probability of Two Events
+                							</option>
+                							<option value="Probability Solver for Two Events" >
+                							Probability Solver for Two Events
+                							</option>
+                							<option value="Series of Independent Events" >
+                							Series of Independent Events
+                							</option>
+                							<option value="Normal Distribution" >
+                							Normal Distribution
+                							</option>
+                					</select>
+                				</div>
+                			</div>
+                		</label>	</div>
+                	<div class="input-wrapper row tab tab--active" data-tab="0">
+                		<label class="input col   ">
+                			<p class="input__title">Probability of A: P(A)</p>
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_a" value="0.5"  />
+                			</div>
+                		
+                		
+                		</label>	</div>
+                	<div class="input-wrapper row tab tab--active" data-tab="0">
+                		<label class="input col   ">
+                			<p class="input__title">Probability of B: P(B)</p>
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_b" value="0.4"  />
+                			</div>
+                		
+                		
+                		</label>	</div>
+                	<div class="input-wrapper row tab" data-tab="1">
+                		<label class="input col ">
+                			<p class="input__title">Probability of</p>
+                			<div class="dropdown-wrapper">
+                				<div class="input-field row " tabindex="0">
+                					<select class="input-field__text" onchange="toggleRelatedInputs(this)" id="probability_of_dropdown_a">
+                							<option value="A: P(A)" selected>
+                							A: P(A)
+                							</option>
+                							<option value="B: P(B)" >
+                							B: P(B)
+                							</option>
+                							<option value="A NOT occuring: P(A&#x27;)" >
+                							A NOT occuring: P(A&#x27;)
+                							</option>
+                							<option value="B NOT occuring: P(B&#x27;)" >
+                							B NOT occuring: P(B&#x27;)
+                							</option>
+                							<option value="A and B both occuring: P(A∩B)" >
+                							A and B both occuring: P(A∩B)
+                							</option>
+                							<option value="A or B or both occur: P(A∪B)" >
+                							A or B or both occur: P(A∪B)
+                							</option>
+                							<option value="A or B occurs but NOT both: P(AΔB)" >
+                							A or B occurs but NOT both: P(AΔB)
+                							</option>
+                							<option value="Neither A nor B occuring: P((A∪B)&#x27;)" >
+                							Neither A nor B occuring: P((A∪B)&#x27;)
+                							</option>
+                					</select>
+                				</div>
+                			</div>
+                		</label>		<label class="input col   ">
+                			
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_of_a" value="0.5"  />
+                			</div>
+                		
+                		
+                		</label>	</div>
+                	<div class="input-wrapper row tab" data-tab="1">
+                		<label class="input col ">
+                			<p class="input__title">Probability of</p>
+                			<div class="dropdown-wrapper">
+                				<div class="input-field row " tabindex="0">
+                					<select class="input-field__text" onchange="toggleRelatedInputs(this)" id="probability_of_dropdown_b">
+                							<option value="A: P(A)" >
+                							A: P(A)
+                							</option>
+                							<option value="B: P(B)" selected>
+                							B: P(B)
+                							</option>
+                							<option value="A NOT occuring: P(A&#x27;)" >
+                							A NOT occuring: P(A&#x27;)
+                							</option>
+                							<option value="B NOT occuring: P(B&#x27;)" >
+                							B NOT occuring: P(B&#x27;)
+                							</option>
+                							<option value="A and B both occuring: P(A∩B)" >
+                							A and B both occuring: P(A∩B)
+                							</option>
+                							<option value="A or B or both occur: P(A∪B)" >
+                							A or B or both occur: P(A∪B)
+                							</option>
+                							<option value="A or B occurs but NOT both: P(AΔB)" >
+                							A or B occurs but NOT both: P(AΔB)
+                							</option>
+                							<option value="Neither A nor B occuring: P((A∪B)&#x27;)" >
+                							Neither A nor B occuring: P((A∪B)&#x27;)
+                							</option>
+                					</select>
+                				</div>
+                			</div>
+                		</label>		<label class="input col   ">
+                			
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_of_b" value="0.4"  />
+                			</div>
+                		
+                		
+                		</label>	</div>
+                	<div class="input-wrapper row tab" data-tab="2">
+                		<label class="input col   ">
+                			<p class="input__title">Event A Probability</p>
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_event_a" value="0.6"  />
+                			</div>
+                		
+                		
+                		</label>		<label class="input col   ">
+                			<p class="input__title">Repeat Times</p>
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_repeat_a" value="5"  />
+                			</div>
+                		
+                		
+                		</label>	</div>
+                	<div class="input-wrapper row tab" data-tab="2">
+                		<label class="input col   ">
+                			<p class="input__title">Event B Probability</p>
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_event_b" value="0.3"  />
+                			</div>
+                		
+                		
+                		</label>		<label class="input col   ">
+                			<p class="input__title">Repeat Times</p>
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_repeat_b" value="3"  />
+                			</div>
+                		
+                		
+                		</label>	</div>
+                	<div class="input-wrapper row tab" data-tab="3">
+                		<label class="input col   ">
+                			<p class="input__title">Mean: (µ)</p>
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_mean" value="0"  />
+                			</div>
+                		
+                		
+                		</label>	</div>
+                	<div class="input-wrapper row tab" data-tab="3">
+                		<label class="input col   ">
+                			<p class="input__title">Standard Deviation (σ)</p>
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_deviation" value="1"  />
+                			</div>
+                		
+                		
+                		</label>	</div>
+                	<div class="input-wrapper row tab" data-tab="3">
+                		<label class="input col   ">
+                			<p class="input__title">Left Bound (Lb)</p>
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_lb" value="-1"  />
+                			</div>
+                		
+                			<div class="input-hints row">
+                				<span class="input-hints__hint input-hints__hint--comma">For negative infinite, use -Infinity</span>
+                			</div>
+                		
+                		</label>	</div>
+                	<div class="input-wrapper row tab" data-tab="3">
+                		<label class="input col   ">
+                			<p class="input__title">Right Bound (Rb)</p>
+                			<div class="input-field row">
+                				<input type="text" class="input-field__input" placeholder=""  id="probability_rb" value="1"  />
+                			</div>
+                		
+                			<div class="input-hints row">
+                				<span class="input-hints__hint input-hints__hint--comma">For positive infinite, use Infinity</span>
+                			</div>
+                		
+                		</label>	</div>
+                </div>
+                <div class="calculator-content calculator-content--gray calculator-content--footer calculator-content--small row  " >
+                
+                
+                
+                
+                	<button class="button button--primary ml-auto" onclick="calculate(this)">Calculate</button>
+                </div>
+                
+                
+                
+                
+                	<script type="text/javascript" src="./assets/js/calculator.js"></script>
+            </div>
+        </div>
+    </div>
+    <div style="float:left;padding: 15px; overflow: scroll;">
+        <div class="calculator-result calculator-result--error col" id="error-box">
+        	<div class="row">
+        		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        	<path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.70711
+        						7.29289C8.31658 6.90237 7.68342 6.90237 7.29289 7.29289C6.90237 7.68342 6.90237 8.31658 7.29289 8.70711L8.58579 10L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289
+        						12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L10 11.4142L11.2929 12.7071C11.6834 13.0976 12.3166 13.0976 12.7071 12.7071C13.0976 12.3166 13.0976 11.6834 12.7071
+        						11.2929L11.4142 10L12.7071 8.70711C13.0976 8.31658 13.0976 7.68342 12.7071 7.29289C12.3166 6.90237 11.6834 6.90237 11.2929 7.29289L10 8.58579L8.70711 7.29289Z" fill="#F87171" class="dark:fill-red-200"></path>
+        </svg>
+        		<p class="calculator-error__title">There was an error with your calculation.</p>
+        	</div>
+        	<div class="col" id="error-list">
+        	</div>
+        </div>        <span id="calculator_result"><div class="calculator-result col tab tab--active" data-tab="0">
+	<div class="result-table__wrapper"> 
+		<table class="result-table">
+			<thead class="dark">
+				<tr>
+					<th class="dark indigo" colspan="3">Result</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Probability of A NOT occuring: P(A')</th>
+					<td><span id="result_paNot">0.5</span></td>
+					<td class="short">
+						<svg width="43" height="30" viewBox="0 0 43 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<mask id="mask-1">
+		<rect x="0" y="0" width="100%" height="100%" fill="white"/>
+		<circle cx="15" cy="15" r="14.5" fill="black"></circle>	
+	</mask>
+	<rect mask="url(#mask-1)" width="100%" height="100%" fill="#B4A5FC" fill-opacity="0.3"></rect>
+	<circle cx="15" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<circle cx="28" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<path d="M6.41477 19H5.30682L8.51136 10.2727H9.60227L12.8068 19H11.6989L9.09091 11.6534H9.02273L6.41477 19ZM6.82386 15.5909H11.2898V16.5284H6.82386V15.5909Z" fill="#7C3AED"></path>
+	<path d="M31.0568 19V10.2727H34.108C34.7159 10.2727 35.2173 10.3778 35.6122 10.5881C36.0071 10.7955 36.3011 11.0753 36.4943 11.4276C36.6875 11.777 36.7841 12.1648 36.7841 12.5909C36.7841 12.9659 36.7173 13.2756 36.5838 13.5199C36.4531 13.7642 36.2798 13.9574 36.0639 14.0994C35.8509 14.2415 35.6193 14.3466 35.3693 14.4148V14.5C35.6364 14.517 35.9048 14.6108 36.1747 14.7812C36.4446 14.9517 36.6705 15.196 36.8523 15.5142C37.0341 15.8324 37.125 16.2216 37.125 16.6818C37.125 17.1193 37.0256 17.5128 36.8267 17.8622C36.6278 18.2116 36.3139 18.4886 35.8849 18.6932C35.456 18.8977 34.8977 19 34.2102 19H31.0568ZM32.1136 18.0625H34.2102C34.9006 18.0625 35.3906 17.929 35.6804 17.6619C35.973 17.392 36.1193 17.0653 36.1193 16.6818C36.1193 16.3864 36.044 16.1136 35.8935 15.8636C35.7429 15.6108 35.5284 15.4091 35.25 15.2585C34.9716 15.1051 34.642 15.0284 34.2614 15.0284H32.1136V18.0625ZM32.1136 14.108H34.0739C34.392 14.108 34.679 14.0455 34.9347 13.9205C35.1932 13.7955 35.3977 13.6193 35.5483 13.392C35.7017 13.1648 35.7784 12.8977 35.7784 12.5909C35.7784 12.2074 35.6449 11.8821 35.3778 11.6151C35.1108 11.3452 34.6875 11.2102 34.108 11.2102H32.1136V14.108Z" fill="#7C3AED"></path>
+</svg>
+					</td>
+				</tr>
+				<tr>
+					<th>Probability of B NOT occuring: P(B')</th>
+					<td><span id="result_pbNot">0.6</span></td>
+					<td class="short">
+						<svg width="43" height="30" viewBox="0 0 43 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<mask id="mask-2">
+		<rect x="0" y="0" width="100%" height="100%" fill="white"/>
+		<circle cx="28" cy="15" r="14.5" fill="black"></circle>	
+	</mask>
+	<rect mask="url(#mask-2)" width="100%" height="100%" fill="#B4A5FC" fill-opacity="0.3"></rect>
+	<circle cx="28" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<circle cx="15" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<path d="M6.41477 19H5.30682L8.51136 10.2727H9.60227L12.8068 19H11.6989L9.09091 11.6534H9.02273L6.41477 19ZM6.82386 15.5909H11.2898V16.5284H6.82386V15.5909Z" fill="#7C3AED"></path>
+	<path d="M31.0568 19V10.2727H34.108C34.7159 10.2727 35.2173 10.3778 35.6122 10.5881C36.0071 10.7955 36.3011 11.0753 36.4943 11.4276C36.6875 11.777 36.7841 12.1648 36.7841 12.5909C36.7841 12.9659 36.7173 13.2756 36.5838 13.5199C36.4531 13.7642 36.2798 13.9574 36.0639 14.0994C35.8509 14.2415 35.6193 14.3466 35.3693 14.4148V14.5C35.6364 14.517 35.9048 14.6108 36.1747 14.7812C36.4446 14.9517 36.6705 15.196 36.8523 15.5142C37.0341 15.8324 37.125 16.2216 37.125 16.6818C37.125 17.1193 37.0256 17.5128 36.8267 17.8622C36.6278 18.2116 36.3139 18.4886 35.8849 18.6932C35.456 18.8977 34.8977 19 34.2102 19H31.0568ZM32.1136 18.0625H34.2102C34.9006 18.0625 35.3906 17.929 35.6804 17.6619C35.973 17.392 36.1193 17.0653 36.1193 16.6818C36.1193 16.3864 36.044 16.1136 35.8935 15.8636C35.7429 15.6108 35.5284 15.4091 35.25 15.2585C34.9716 15.1051 34.642 15.0284 34.2614 15.0284H32.1136V18.0625ZM32.1136 14.108H34.0739C34.392 14.108 34.679 14.0455 34.9347 13.9205C35.1932 13.7955 35.3977 13.6193 35.5483 13.392C35.7017 13.1648 35.7784 12.8977 35.7784 12.5909C35.7784 12.2074 35.6449 11.8821 35.3778 11.6151C35.1108 11.3452 34.6875 11.2102 34.108 11.2102H32.1136V14.108Z" fill="#7C3AED"></path>
+</svg>
+					</td>
+				</tr>
+				<tr>
+					<th>Probability of A and B both occuring: P(A∩B)</th>
+					<td><span id="result_paAndPb">0.2</span></td>
+					<td class="short">
+						<svg width="43" height="30" viewBox="0 0 43 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<circle cx="28" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<circle cx="15" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<path d="M30 15.4912C30 22.1186 25.0782 27.4912 20.9721 27.4912C16.7174 25.9912 13 21.6186 13 14.9912C13 8.36379 18.3105 2.49121 21.4968 2.49121C25.7452 2.99121 30 8.86379 30 15.4912Z" fill="#B4A5FC" fill-opacity="0.3"></path>
+	<path d="M6.41477 19H5.30682L8.51136 10.2727H9.60227L12.8068 19H11.6989L9.09091 11.6534H9.02273L6.41477 19ZM6.82386 15.5909H11.2898V16.5284H6.82386V15.5909Z" fill="#7C3AED"></path>
+	<path d="M31.0568 19V10.2727H34.108C34.7159 10.2727 35.2173 10.3778 35.6122 10.5881C36.0071 10.7955 36.3011 11.0753 36.4943 11.4276C36.6875 11.777 36.7841 12.1648 36.7841 12.5909C36.7841 12.9659 36.7173 13.2756 36.5838 13.5199C36.4531 13.7642 36.2798 13.9574 36.0639 14.0994C35.8509 14.2415 35.6193 14.3466 35.3693 14.4148V14.5C35.6364 14.517 35.9048 14.6108 36.1747 14.7812C36.4446 14.9517 36.6705 15.196 36.8523 15.5142C37.0341 15.8324 37.125 16.2216 37.125 16.6818C37.125 17.1193 37.0256 17.5128 36.8267 17.8622C36.6278 18.2116 36.3139 18.4886 35.8849 18.6932C35.456 18.8977 34.8977 19 34.2102 19H31.0568ZM32.1136 18.0625H34.2102C34.9006 18.0625 35.3906 17.929 35.6804 17.6619C35.973 17.392 36.1193 17.0653 36.1193 16.6818C36.1193 16.3864 36.044 16.1136 35.8935 15.8636C35.7429 15.6108 35.5284 15.4091 35.25 15.2585C34.9716 15.1051 34.642 15.0284 34.2614 15.0284H32.1136V18.0625ZM32.1136 14.108H34.0739C34.392 14.108 34.679 14.0455 34.9347 13.9205C35.1932 13.7955 35.3977 13.6193 35.5483 13.392C35.7017 13.1648 35.7784 12.8977 35.7784 12.5909C35.7784 12.2074 35.6449 11.8821 35.3778 11.6151C35.1108 11.3452 34.6875 11.2102 34.108 11.2102H32.1136V14.108Z" fill="#7C3AED"></path>
+</svg>
+					</td>
+				</tr>
+				<tr>
+					<th>Probability that A or B or both occur: P(A∪B)</th>
+					<td><span id="result_paOrPb">0.7</span></td>
+					<td class="short">
+						<svg width="43" height="30" viewBox="0 0 43 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<mask id="mask-4">
+		<circle cx="28" cy="15" r="14.5" fill="white"></circle>	
+		<circle cx="15" cy="15" r="14.5" fill="white"></circle>	
+	</mask>
+	<rect mask="url(#mask-4)" width="100%" height="100%" fill="#B4A5FC" fill-opacity="0.3"></rect>
+	<circle cx="28" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<circle cx="15" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<path d="M6.41477 19H5.30682L8.51136 10.2727H9.60227L12.8068 19H11.6989L9.09091 11.6534H9.02273L6.41477 19ZM6.82386 15.5909H11.2898V16.5284H6.82386V15.5909Z" fill="#7C3AED"></path>
+	<path d="M31.0568 19V10.2727H34.108C34.7159 10.2727 35.2173 10.3778 35.6122 10.5881C36.0071 10.7955 36.3011 11.0753 36.4943 11.4276C36.6875 11.777 36.7841 12.1648 36.7841 12.5909C36.7841 12.9659 36.7173 13.2756 36.5838 13.5199C36.4531 13.7642 36.2798 13.9574 36.0639 14.0994C35.8509 14.2415 35.6193 14.3466 35.3693 14.4148V14.5C35.6364 14.517 35.9048 14.6108 36.1747 14.7812C36.4446 14.9517 36.6705 15.196 36.8523 15.5142C37.0341 15.8324 37.125 16.2216 37.125 16.6818C37.125 17.1193 37.0256 17.5128 36.8267 17.8622C36.6278 18.2116 36.3139 18.4886 35.8849 18.6932C35.456 18.8977 34.8977 19 34.2102 19H31.0568ZM32.1136 18.0625H34.2102C34.9006 18.0625 35.3906 17.929 35.6804 17.6619C35.973 17.392 36.1193 17.0653 36.1193 16.6818C36.1193 16.3864 36.044 16.1136 35.8935 15.8636C35.7429 15.6108 35.5284 15.4091 35.25 15.2585C34.9716 15.1051 34.642 15.0284 34.2614 15.0284H32.1136V18.0625ZM32.1136 14.108H34.0739C34.392 14.108 34.679 14.0455 34.9347 13.9205C35.1932 13.7955 35.3977 13.6193 35.5483 13.392C35.7017 13.1648 35.7784 12.8977 35.7784 12.5909C35.7784 12.2074 35.6449 11.8821 35.3778 11.6151C35.1108 11.3452 34.6875 11.2102 34.108 11.2102H32.1136V14.108Z" fill="#7C3AED"></path>
+</svg>
+					</td>
+				</tr>
+				<tr>
+					<th>Probability that A or B occurs but NOT both: P(AΔB)</th>
+					<td><span id="result_paXorPb">0.5</span></td>
+					<td class="short">
+						<svg width="43" height="30" viewBox="0 0 43 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<mask id="mask-5">
+		<circle cx="28" cy="15" r="14.5" fill="white"></circle>	
+		<circle cx="15" cy="15" r="14.5" fill="white"></circle>
+		<path d="M30 15.4912C30 22.1186 25.0782 27.4912 20.9721 27.4912C16.7174 25.9912 13 21.6186 13 14.9912C13 8.36379 18.3105 2.49121 21.4968 2.49121C25.7452 2.99121 30 8.86379 30 15.4912Z" fill="black"></path>
+	</mask>
+	<rect mask="url(#mask-5)" width="100%" height="100%" fill="#B4A5FC" fill-opacity="0.3"></rect>
+	<circle cx="28" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<circle cx="15" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<path d="M6.41477 19H5.30682L8.51136 10.2727H9.60227L12.8068 19H11.6989L9.09091 11.6534H9.02273L6.41477 19ZM6.82386 15.5909H11.2898V16.5284H6.82386V15.5909Z" fill="#7C3AED"></path>
+	<path d="M31.0568 19V10.2727H34.108C34.7159 10.2727 35.2173 10.3778 35.6122 10.5881C36.0071 10.7955 36.3011 11.0753 36.4943 11.4276C36.6875 11.777 36.7841 12.1648 36.7841 12.5909C36.7841 12.9659 36.7173 13.2756 36.5838 13.5199C36.4531 13.7642 36.2798 13.9574 36.0639 14.0994C35.8509 14.2415 35.6193 14.3466 35.3693 14.4148V14.5C35.6364 14.517 35.9048 14.6108 36.1747 14.7812C36.4446 14.9517 36.6705 15.196 36.8523 15.5142C37.0341 15.8324 37.125 16.2216 37.125 16.6818C37.125 17.1193 37.0256 17.5128 36.8267 17.8622C36.6278 18.2116 36.3139 18.4886 35.8849 18.6932C35.456 18.8977 34.8977 19 34.2102 19H31.0568ZM32.1136 18.0625H34.2102C34.9006 18.0625 35.3906 17.929 35.6804 17.6619C35.973 17.392 36.1193 17.0653 36.1193 16.6818C36.1193 16.3864 36.044 16.1136 35.8935 15.8636C35.7429 15.6108 35.5284 15.4091 35.25 15.2585C34.9716 15.1051 34.642 15.0284 34.2614 15.0284H32.1136V18.0625ZM32.1136 14.108H34.0739C34.392 14.108 34.679 14.0455 34.9347 13.9205C35.1932 13.7955 35.3977 13.6193 35.5483 13.392C35.7017 13.1648 35.7784 12.8977 35.7784 12.5909C35.7784 12.2074 35.6449 11.8821 35.3778 11.6151C35.1108 11.3452 34.6875 11.2102 34.108 11.2102H32.1136V14.108Z" fill="#7C3AED"></path>
+	<path d="M29.5 15.4912C29.5 18.6823 28.3141 21.5735 26.636 23.6634C24.9717 25.736 22.8828 26.9539 21.0564 26.9904C17.0429 25.5363 13.5 21.3714 13.5 14.9912C13.5 11.807 14.7785 8.78487 16.4533 6.55632C17.2895 5.44357 18.2145 4.54236 19.1094 3.92361C20.0001 3.30765 20.8187 3.00018 21.4683 2.9914C23.3847 3.22961 25.3855 4.69258 26.9273 6.97345C28.4683 9.25297 29.5 12.281 29.5 15.4912Z" class="fill-purple-50 dark:fill-darkBlue-900" stroke="#A78BFA"></path>
+</svg>
+					</td>
+				</tr>
+				<tr>
+					<th>Probability of neither A nor B occuring: P((A∪B)')</th>
+					<td><span id="result_paNorPb">0.3</span></td>
+					<td class="short">
+						<svg width="43" height="30" viewBox="0 0 43 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<mask id="mask-6">
+		<rect x="0" y="0" width="100%" height="100%" fill="white"/>
+		<circle cx="15" cy="15" r="14.5" fill="black"></circle>	
+		<circle cx="28" cy="15" r="14.5" fill="black"></circle>	
+	</mask>
+	<rect mask="url(#mask-6)" width="100%" height="100%" fill="#B4A5FC" fill-opacity="0.3"></rect>
+	<circle cx="28" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<circle cx="15" cy="15" r="14.5" stroke="#A78BFA"></circle>
+	<path d="M6.41477 19H5.30682L8.51136 10.2727H9.60227L12.8068 19H11.6989L9.09091 11.6534H9.02273L6.41477 19ZM6.82386 15.5909H11.2898V16.5284H6.82386V15.5909Z" fill="#7C3AED"></path>
+	<path d="M31.0568 19V10.2727H34.108C34.7159 10.2727 35.2173 10.3778 35.6122 10.5881C36.0071 10.7955 36.3011 11.0753 36.4943 11.4276C36.6875 11.777 36.7841 12.1648 36.7841 12.5909C36.7841 12.9659 36.7173 13.2756 36.5838 13.5199C36.4531 13.7642 36.2798 13.9574 36.0639 14.0994C35.8509 14.2415 35.6193 14.3466 35.3693 14.4148V14.5C35.6364 14.517 35.9048 14.6108 36.1747 14.7812C36.4446 14.9517 36.6705 15.196 36.8523 15.5142C37.0341 15.8324 37.125 16.2216 37.125 16.6818C37.125 17.1193 37.0256 17.5128 36.8267 17.8622C36.6278 18.2116 36.3139 18.4886 35.8849 18.6932C35.456 18.8977 34.8977 19 34.2102 19H31.0568ZM32.1136 18.0625H34.2102C34.9006 18.0625 35.3906 17.929 35.6804 17.6619C35.973 17.392 36.1193 17.0653 36.1193 16.6818C36.1193 16.3864 36.044 16.1136 35.8935 15.8636C35.7429 15.6108 35.5284 15.4091 35.25 15.2585C34.9716 15.1051 34.642 15.0284 34.2614 15.0284H32.1136V18.0625ZM32.1136 14.108H34.0739C34.392 14.108 34.679 14.0455 34.9347 13.9205C35.1932 13.7955 35.3977 13.6193 35.5483 13.392C35.7017 13.1648 35.7784 12.8977 35.7784 12.5909C35.7784 12.2074 35.6449 11.8821 35.3778 11.6151C35.1108 11.3452 34.6875 11.2102 34.108 11.2102H32.1136V14.108Z" fill="#7C3AED"></path>
+</svg>
+					</td>
+				</tr>
+				<tr>
+					<th>Probability of A occuring but NOT B:</th>
+					<td><span id="result_paNotPb">0.3</span></td>
+					<td class="short">
+						<svg width="43" height="31" viewBox="0 0 43 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<mask id="mask-7">
+		<circle cx="28" cy="15" r="14.5" fill="black"></circle>	
+		<circle cx="15" cy="15" r="14.5" fill="white"></circle>
+		<path d="M30 15.4912C30 22.1186 25.0782 27.4912 20.9721 27.4912C16.7174 25.9912 13 21.6186 13 14.9912C13 8.36379 18.3105 2.49121 21.4968 2.49121C25.7452 2.99121 30 8.86379 30 15.4912Z" fill="black"></path>
+	</mask>
+	<rect mask="url(#mask-7)" width="100%" height="100%" fill="#B4A5FC" fill-opacity="0.3"></rect>
+
+	<circle cx="28" cy="15.5" r="14.5" stroke="#A78BFA"></circle>
+	<circle cx="15" cy="15.5" r="14.5" stroke="#A78BFA"></circle>
+	<path d="M6.41477 19.5H5.30682L8.51136 10.7727H9.60227L12.8068 19.5H11.6989L9.09091 12.1534H9.02273L6.41477 19.5ZM6.82386 16.0909H11.2898V17.0284H6.82386V16.0909Z" fill="#7C3AED"></path>
+	<path d="M31.0568 19.5V10.7727H34.108C34.7159 10.7727 35.2173 10.8778 35.6122 11.0881C36.0071 11.2955 36.3011 11.5753 36.4943 11.9276C36.6875 12.277 36.7841 12.6648 36.7841 13.0909C36.7841 13.4659 36.7173 13.7756 36.5838 14.0199C36.4531 14.2642 36.2798 14.4574 36.0639 14.5994C35.8509 14.7415 35.6193 14.8466 35.3693 14.9148V15C35.6364 15.017 35.9048 15.1108 36.1747 15.2812C36.4446 15.4517 36.6705 15.696 36.8523 16.0142C37.0341 16.3324 37.125 16.7216 37.125 17.1818C37.125 17.6193 37.0256 18.0128 36.8267 18.3622C36.6278 18.7116 36.3139 18.9886 35.8849 19.1932C35.456 19.3977 34.8977 19.5 34.2102 19.5H31.0568ZM32.1136 18.5625H34.2102C34.9006 18.5625 35.3906 18.429 35.6804 18.1619C35.973 17.892 36.1193 17.5653 36.1193 17.1818C36.1193 16.8864 36.044 16.6136 35.8935 16.3636C35.7429 16.1108 35.5284 15.9091 35.25 15.7585C34.9716 15.6051 34.642 15.5284 34.2614 15.5284H32.1136V18.5625ZM32.1136 14.608H34.0739C34.392 14.608 34.679 14.5455 34.9347 14.4205C35.1932 14.2955 35.3977 14.1193 35.5483 13.892C35.7017 13.6648 35.7784 13.3977 35.7784 13.0909C35.7784 12.7074 35.6449 12.3821 35.3778 12.1151C35.1108 11.8452 34.6875 11.7102 34.108 11.7102H32.1136V14.608Z" fill="#7C3AED"></path>
+	<path d="M29.5 15.9912C29.5 19.1823 28.3141 22.0735 26.636 24.1634C24.9717 26.236 22.8828 27.4539 21.0564 27.4904C17.0429 26.0363 13.5 21.8714 13.5 15.4912C13.5 12.307 14.7785 9.28487 16.4533 7.05632C17.2895 5.94357 18.2145 5.04236 19.1094 4.42361C20.0001 3.80765 20.8187 3.50018 21.4683 3.4914C23.3847 3.72961 25.3855 5.19258 26.9273 7.47345C28.4683 9.75297 29.5 12.781 29.5 15.9912Z" class="fill-purple-50 dark:fill-darkBlue-900" stroke="#A78BFA"></path>
+</svg>
+					</td>
+				</tr>
+				<tr>
+					<th>Probability of B occuring but NOT A:</th>
+					<td><span id="result_pbNotPa">0.2</span></td>
+					<td class="short">
+						<svg width="43" height="31" viewBox="0 0 43 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<mask id="mask-8">
+		<circle cx="28" cy="15" r="14.5" fill="white"></circle>	
+		<circle cx="15" cy="15" r="14.5" fill="black"></circle>
+		<path d="M30 15.4912C30 22.1186 25.0782 27.4912 20.9721 27.4912C16.7174 25.9912 13 21.6186 13 14.9912C13 8.36379 18.3105 2.49121 21.4968 2.49121C25.7452 2.99121 30 8.86379 30 15.4912Z" fill="black"></path>
+	</mask>
+	<rect mask="url(#mask-8)" width="100%" height="100%" fill="#B4A5FC" fill-opacity="0.3"></rect>
+	
+	<circle cx="28" cy="15.5" r="14.5" stroke="#A78BFA"></circle>
+	<circle cx="15" cy="15.5" r="14.5" stroke="#A78BFA"></circle>
+	<path d="M6.41477 19.5H5.30682L8.51136 10.7727H9.60227L12.8068 19.5H11.6989L9.09091 12.1534H9.02273L6.41477 19.5ZM6.82386 16.0909H11.2898V17.0284H6.82386V16.0909Z" fill="#7C3AED"></path>
+	<path d="M31.0568 19.5V10.7727H34.108C34.7159 10.7727 35.2173 10.8778 35.6122 11.0881C36.0071 11.2955 36.3011 11.5753 36.4943 11.9276C36.6875 12.277 36.7841 12.6648 36.7841 13.0909C36.7841 13.4659 36.7173 13.7756 36.5838 14.0199C36.4531 14.2642 36.2798 14.4574 36.0639 14.5994C35.8509 14.7415 35.6193 14.8466 35.3693 14.9148V15C35.6364 15.017 35.9048 15.1108 36.1747 15.2812C36.4446 15.4517 36.6705 15.696 36.8523 16.0142C37.0341 16.3324 37.125 16.7216 37.125 17.1818C37.125 17.6193 37.0256 18.0128 36.8267 18.3622C36.6278 18.7116 36.3139 18.9886 35.8849 19.1932C35.456 19.3977 34.8977 19.5 34.2102 19.5H31.0568ZM32.1136 18.5625H34.2102C34.9006 18.5625 35.3906 18.429 35.6804 18.1619C35.973 17.892 36.1193 17.5653 36.1193 17.1818C36.1193 16.8864 36.044 16.6136 35.8935 16.3636C35.7429 16.1108 35.5284 15.9091 35.25 15.7585C34.9716 15.6051 34.642 15.5284 34.2614 15.5284H32.1136V18.5625ZM32.1136 14.608H34.0739C34.392 14.608 34.679 14.5455 34.9347 14.4205C35.1932 14.2955 35.3977 14.1193 35.5483 13.892C35.7017 13.6648 35.7784 13.3977 35.7784 13.0909C35.7784 12.7074 35.6449 12.3821 35.3778 12.1151C35.1108 11.8452 34.6875 11.7102 34.108 11.7102H32.1136V14.608Z" fill="#7C3AED"></path>
+	<path d="M29.5 15.9912C29.5 19.1823 28.3141 22.0735 26.636 24.1634C24.9717 26.236 22.8828 27.4539 21.0564 27.4904C17.0429 26.0363 13.5 21.8714 13.5 15.4912C13.5 12.307 14.7785 9.28487 16.4533 7.05632C17.2895 5.94357 18.2145 5.04236 19.1094 4.42361C20.0001 3.80765 20.8187 3.50018 21.4683 3.4914C23.3847 3.72961 25.3855 5.19258 26.9273 7.47345C28.4683 9.75297 29.5 12.781 29.5 15.9912Z" class="fill-purple-50 dark:fill-darkBlue-900" stroke="#A78BFA"></path>
+</svg>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="calculator-result col tab" data-tab="1">
+	<p class="table-cell table-cell--dark table-cell--only-title">Probability</p>
+	<p class="table-cell table-cell--only" id="result_solver">
+		Probability of A: P(A) = 0.5 <br><br>
+		Probability of B: P(B) = 0.4 <br><br>
+		Probability of A NOT occuring: P(A') = 1 - P(A) = 0.5 <br><br>
+		Probability of B NOT occuring: P(B') = 1 - P(B) = 0.6 <br><br>
+		Probability of A and B both occuring: P(A∩B) = P(A) × P(B) = 0.2 <br><br>
+		Probability that A or B or both occur: P(A∪B) = P(A) + P(B) - P(A∩B) = 0.7 <br><br>
+		Probability that A or B occurs but NOT both: P(AΔB) = P(A) + P(B) - 2P(A∩B) = 0.5 <br><br>
+		Probability of neither A nor B occuring: P((A∪B)') = 1 - P(A∪B) = 0.3 <br><br>
+		Probability of A occuring but NOT B: P(A) × (1 - P(B)) = 0.3 <br><br>
+		Probability of B occuring but NOT A: (1 - P(A)) × P(B) = 0.2
+	</p>
+</div>
+
+<div class="calculator-result col tab" data-tab="2">
+	<p class="table-cell table-cell--dark table-cell--only-title">Probability</p>
+	<p class="table-cell table-cell--only" id="result_events">
+		Probability of A occuring 5 time(s) = 0.6<sup>5</sup> = 0.07776 <br><br>
+		Probability of A NOT occuring = (1-0.6)<sup>5</sup> = 0.01024 <br><br>		
+		Probability of A occuring = 1-(1-0.6)<sup>5</sup> = 0.98976 <br><br>		
+		Probability of B occuring 3 time(s) = 0.3<sup>3</sup> = 0.027 <br><br>		
+		Probability of B NOT occuring = (1-0.3)<sup>3</sup> = 0.343 <br><br>		
+		Probability of B occuring = 1-(1-0.3)<sup>3</sup> = 0.657 <br><br>		
+		Probability of A occuring 5 time(s) and B occuring 3 time(s) = 0.6<sup>5</sup> × 0.3<sup>3</sup> = 0.00209952 <br><br>		
+		Probability of neither A nor B occuring = (1-0.6)<sup>5</sup> × (1-0.3)<sup>3</sup> = 0.00351232 <br><br>		
+		Probability of both A and B occuring = (1-(1-0.6)<sup>5</sup>) × (1-(1-0.3)<sup>3</sup>) = 0.65027232 <br><br>		
+		Probability of A occuring 5 times but not B = 0.6<sup>5</sup> × (1-0.3)<sup>3</sup> = 0.02667168 <br><br>		
+		Probability of B occuring 3 times but not A = (1-0.6)<sup>5</sup> × 0.3<sup>3</sup> = 2.7648e-4 <br><br>		
+		Probability of A occuring but not B = (1-(1-0.6)<sup>5</sup>) × (1-0.3)<sup>3</sup> = 0.33948768 <br><br>		
+		Probability of B occuring but not A = (1-0.6)<sup>5</sup> × (1-(1-0.3)<sup>3</sup>) = 0.00672768
+	</p>
+</div>
+
+<div class="calculator-result col tab" data-tab="3">
+	<p class="table-cell table-cell--dark table-cell--only-title">Probability</p>
+	<p class="table-cell table-cell--only" id="result_distribution">
+		The probability between -1 and 1 is 0.68268 <br><br>
+		The probability outside of -1 and 1 is 0.31732 <br><br>
+		The probability of -1 or less (≤-1) is 0.15866 <br><br>
+		The probability of 1 or more (≥1) is 0.15866
+	</p>
+	<div class="result-table__wrapper"> 
+		<table class="result-table">
+			<thead class="dark">
+				<tr>
+					<th class="dark indigo" colspan="3">CONFIDENCE INTERVALS TABLE</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>CONFIDENCE</th>
+					<th>RANGE</th>
+					<th>N</th>
+				</tr>
+				<tr id="result_confidence_1">
+					<td>0.6828</td>
+					<td>-1.00000 – 1.00000</td>
+					<td>1</td>
+				</tr>
+				<tr id="result_confidence_2">
+					<td>0.8</td>
+					<td>-1.28155 – 1.28155</td>
+					<td>1.281551565545</td>
+				</tr>
+				<tr id="result_confidence_3">
+					<td>0.9</td>
+					<td>-1.64485 – 1.64485</td>
+					<td>1.644853626951</td>
+				</tr>
+				<tr id="result_confidence_4">
+					<td>0.95</td>
+					<td>-1.95996 – 1.95996</td>
+					<td>1.959963984540</td>
+				</tr>
+				<tr id="result_confidence_5">
+					<td>0.98</td>
+					<td>-2.32635 – 2.32635</td>
+					<td>2.326347874041</td>
+				</tr>
+				<tr id="result_confidence_6">
+					<td>0.99</td>
+					<td>-2.57583 – 2.57583</td>
+					<td>2.575829303549</td>
+				</tr>
+				<tr id="result_confidence_7">
+					<td>0.995</td>
+					<td>-2.80703 – 2.80703</td>
+					<td>2.807033768344</td>
+				</tr>
+				<tr id="result_confidence_8">
+					<td>0.998</td>
+					<td>-3.09023 – 3.09023</td>
+					<td>3.090232306168</td>
+				</tr>
+				<tr id="result_confidence_9">
+					<td>0.999</td>
+					<td>-3.29053 – 3.29053</td>
+					<td>3.290526731492</td>
+				</tr>
+				<tr id="result_confidence_10">
+					<td>0.9999</td>
+					<td>-3.89059 – 3.89059</td>
+					<td>3.890591886413</td>
+				</tr>
+				<tr id="result_confidence_11">
+					<td>0.99999</td>
+					<td>-4.41717 – 4.41717</td>
+					<td>4.417173413469 </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div></span>
+    </div>
+</div>
+
+<script async src="./assets/js/lib/math.min.js"></script>
+<script defer src="./assets/js/functions.js"></script>
+
+</body>
+</html>
