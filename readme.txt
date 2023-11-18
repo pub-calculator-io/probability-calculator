@@ -1,4 +1,4 @@
-=== Probability Calculator by Calculator.iO ===
+=== Probability Calculator ===
 Contributors: calculatorio
 Tags: odds probability calculator, winning and losing probability, odds and probability differences, calculating odds, probability of winning, probability of losing, odds for winning, odds against winning, event probability calculation, odds calculation methods
 Requires at least: 5.0
