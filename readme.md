@@ -1,4 +1,4 @@
-# Probability Calculator WordPress Widget by [Calculator.iO](https://www.calculator.io/ "Calculator.iO Homepage")
+# Probability Calculator Widget for WordPress
 
 The probability calculator can find two events' probability and the normal distribution probability. Learn more about probability's laws and calculations.
 
