@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Probability Calculator by www.calculator.io
+Plugin Name: CI Probability calculator
 Plugin URI: https://www.calculator.io/probability-calculator/
 Description: The probability calculator can find two events' probability and the normal distribution probability. Learn more about probability's laws and calculations.
 Version: 1.0.0
