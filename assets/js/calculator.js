@@ -44,16 +44,16 @@ function calculate(){
       const fields = ['probability_of_dropdown_a','probability_of_dropdown_b']; 
       const eventAB = [eventA,eventB];
       if(eventA == eventB){
-        input.error(fields, "Please provide 2 different events");
+        input.error(fields, "Provide 2 different events");
       }
       if(eventAB.includes('pa') && eventAB.includes('paNot')){
-        input.error(fields, "Please provide 2 values other than P(A) and P(A')");
+        input.error(fields, "Provide 2 values other than P(A) and P(A')");
       }
       if(eventAB.includes('pb') && eventAB.includes('pbNot')){
-        input.error(fields, "Please provide 2 values other than P(B) and P(B')");
+        input.error(fields, "Provide 2 values other than P(B) and P(B')");
       }
       if(eventAB.includes('paOrPb') && eventAB.includes('paNorPb')){
-        input.error(fields, "Please provide 2 values other than P(A∪B) and P((A∪B)')");
+        input.error(fields, "Provide 2 values other than P(A∪B) and P((A∪B)')");
       }
       if(eventAB.includes('pa') && eventAB.includes('paXorPb')){
         input.error(fields, "Unable to find P(B) and the rest probabilities.");
@@ -197,7 +197,7 @@ function calculate(){
       const s = input.get('probability_deviation').positive().val();
       const lb = input.get('probability_lb').number().val();
       const rb = input.get('probability_rb').number().val();
-      if(lb > rb) input.error('lb','Please specify the left bound value less than or equal to the right bound value');
+      if(lb > rb) input.error('lb','Specify the left bound value less than or equal to the right bound value');
       if(!input.valid()) return;
 
       const z = [

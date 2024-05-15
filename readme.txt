@@ -24,7 +24,6 @@ Add the following code to your template where you would like the Probability Cal
 == Screenshots ==
 
 1. The Probability Calculator Input Form.
-2. The Probability Calculator Calculation Results.
 
 == Installation ==
 

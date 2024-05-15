@@ -3,7 +3,6 @@
 The probability calculator can find two events' probability and the normal distribution probability. Learn more about probability's laws and calculations.
 
 ![Probability Calculator Input Form](/assets/images/screenshot-1.png "Probability Calculator Input Form")
-![Probability Calculator Calculation Results](/assets/images/screenshot-2.png "Probability Calculator Calculation Results")
 
 ## Installation
 
